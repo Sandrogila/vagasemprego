@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Data
 @Entity
@@ -38,9 +39,7 @@ public class Company implements UserDetails {
     private String website;
 
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
-    private List<JobPosition> jobPositions = new ArrayList<>();
+
 
     @Enumerated(EnumType.STRING)
     private UserRole role = UserRole.COMPANY;
